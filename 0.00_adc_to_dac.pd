@@ -1,0 +1,87 @@
+#N canvas -8 -8 1366 695 12;
+#X obj 165 410 s adc0;
+#X obj 226 410 s adc1;
+#X obj 288 410 s adc2;
+#X obj 352 410 s adc3;
+#X obj 412 410 s adc4;
+#X obj 476 410 s adc5;
+#X obj 673 41 loadbang;
+#X obj 673 69 delay 300;
+#X msg 673 138 \; pd dsp 1 \;;
+#X obj 541 410 s adc6;
+#X obj 601 410 s adc7;
+#X msg 116 294 open;
+#X obj 166 254 r initbang;
+#X obj 754 108 s initbang;
+#X msg 230 295 open adc;
+#X obj 165 326 metro 10;
+#X obj 165 362 terminal_tedium_adc;
+#X msg 420 296 smooth 4;
+#X msg 322 297 deadband 2;
+#X text 672 262 the "open" message opens the device. - don't supply
+any parameter for use with the wm8731 version (= 6 ADC channels) -
+use "open adc" for use with pcm5102a version (= 8 ADC channels). the
+metro object determines the update rate (in ms).;
+#X text 673 341 the "smooth" message adds (optional) averaging (not
+connected in this example): 1 \, 2 \, 4 \, 8 \, and 16 are the options
+(defaults to 1 \, ie no averaging) the "deadband" message can be used
+to add some hysteresis (ditto: not connected here): 0 \, 1 \, 2 \,
+3 \, 4 \, and 5 are legal values (default is 0).;
+#X obj 165 448 r adc0;
+#X obj 221 448 r adc1;
+#X obj 278 448 r adc2;
+#X obj 336 448 r adc3;
+#X obj 393 448 r adc4;
+#X obj 450 448 r adc5;
+#X obj 313 496 pack f f f f f f f f;
+#X obj 313 527 print adc:;
+#X obj 505 448 r adc6;
+#X obj 557 447 r adc7;
+#X obj 116 50 adc~;
+#X obj 115 95 hip~ 5;
+#X obj 194 95 hip~ 5;
+#X obj 114 131 *~ 0.75;
+#X obj 193 131 *~ 0.75;
+#X text 251 93 highpass filter;
+#X text 255 130 rescale amplitude;
+#X text 165 45 AUDIO IN from the TERMINAL TEDIUM \, ADC 1 & 2 = L &
+R in the front panel;
+#X obj 114 170 dac~;
+#X text 752 35 send a trigger when the patch start;
+#X text 754 67 delay the trigger 300ms.;
+#X text 841 108 send the trigger;
+#X text 744 146 the trigger start the dsp;
+#X text 160 170 AUDIO OUT from the TERMINAL TEDIUM;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 7 0 13 0;
+#X connect 11 0 16 0;
+#X connect 12 0 11 0;
+#X connect 12 0 14 0;
+#X connect 12 0 15 0;
+#X connect 15 0 16 0;
+#X connect 16 0 0 0;
+#X connect 16 1 1 0;
+#X connect 16 2 2 0;
+#X connect 16 3 3 0;
+#X connect 16 4 4 0;
+#X connect 16 5 5 0;
+#X connect 16 6 9 0;
+#X connect 16 7 10 0;
+#X connect 17 0 16 0;
+#X connect 18 0 16 0;
+#X connect 21 0 27 0;
+#X connect 22 0 27 1;
+#X connect 23 0 27 2;
+#X connect 24 0 27 3;
+#X connect 25 0 27 4;
+#X connect 26 0 27 5;
+#X connect 27 0 28 0;
+#X connect 29 0 27 6;
+#X connect 30 0 27 7;
+#X connect 31 0 32 0;
+#X connect 31 1 33 0;
+#X connect 32 0 34 0;
+#X connect 33 0 35 0;
+#X connect 34 0 39 0;
+#X connect 35 0 39 1;

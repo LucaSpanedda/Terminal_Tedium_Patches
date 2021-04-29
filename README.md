@@ -2,9 +2,11 @@
 Pure Data patches  for the mxmxmx's Terminal Tedium Eurorack module 
 (with raspberry PI zero and PD Vanilla used for this patches)
 
+
 # 8-tapes.pd
 ### 1.01
-8-tapes is a granular algorithm for the Terminal Tedium that have 8 indipendent tapes. 
+8-tapes is a granular algorithm for the mxmxmx's Terminal Tedium 
+that have 8 indipendent tapes. 
 1 second that you can record per tape. 
 For each tape you can read a section that goes from 1 millisecond to the full recording of 1 second.
 
@@ -20,3 +22,11 @@ For each tape you can read a section that goes from 1 millisecond to the full re
   - tedium_input 23 record all the arrays
   - tedium_input 25 record one array at every tap
   - tedium_input 24 start the automatic recording of one array at time
+
+
+### 1.00
+granular read of 1 voice 
+
+
+### 0.00 - 0.99
+patch for test and study the mxmxmx's Terminal Tedium

@@ -1,0 +1,129 @@
+#N canvas 282 288 1558 818 10;
+#X obj 17 212 tedium_input 23;
+#X text 15 188 tact switches #0-2:;
+#X text 145 187 (panel switches);
+#X obj 147 212 tedium_input 25;
+#X obj 120 212 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 250 212 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 381 214 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 277 214 tedium_input 24;
+#X text 16 284 TT Knobs;
+#X text 17 26 Terminal Tedium Standard Configurations:;
+#X obj 17 238 send button-1;
+#X obj 147 238 send button-2;
+#X obj 278 240 send button-3;
+#X obj 16 64 loadbang;
+#X obj 16 92 delay 300;
+#X msg 16 121 \; pd dsp 1 \;;
+#X obj 96 122 s initbang, f 11;
+#X text 76 64 send a trigger when the patch start;
+#X text 82 93 delay the trigger 300ms.;
+#X text 95 140 the trigger start the dsp;
+#X text 171 122 send the loadpatch trigger;
+#X obj 16 439 s adc0;
+#X obj 77 439 s adc1;
+#X obj 139 439 s adc2;
+#X obj 203 439 s adc3;
+#X obj 263 439 s adc4;
+#X obj 327 439 s adc5;
+#X obj 392 439 s adc6;
+#X obj 452 439 s adc7;
+#X msg 292 344 open;
+#X obj 16 304 r initbang;
+#X msg 81 345 open adc;
+#X obj 16 376 metro 10;
+#X obj 16 409 terminal_tedium_adc;
+#X msg 226 345 smooth 4;
+#X msg 147 345 deadband 2;
+#X text 13 595 the "open" message opens the device. - don't supply
+any parameter for use with the wm8731 version (= 6 ADC channels) -
+use "open adc" for use with pcm5102a version (= 8 ADC channels). the
+metro object determines the update rate (in ms).;
+#X text 14 674 the "smooth" message adds (optional) averaging (not
+connected in this example): 1 \, 2 \, 4 \, 8 \, and 16 are the options
+(defaults to 1 \, ie no averaging) the "deadband" message can be used
+to add some hysteresis (ditto: not connected here): 0 \, 1 \, 2 \,
+3 \, 4 \, and 5 are legal values (default is 0).;
+#X obj 16 477 r adc0;
+#X obj 72 477 r adc1;
+#X obj 129 477 r adc2;
+#X obj 187 477 r adc3;
+#X obj 244 477 r adc4;
+#X obj 301 477 r adc5;
+#X obj 164 525 pack f f f f f f f f;
+#X obj 164 556 print adc:;
+#X obj 356 477 r adc6;
+#X obj 408 476 r adc7;
+#X obj 613 78 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 648 100 + 1;
+#X obj 613 125 + 1;
+#X obj 613 51 receive button-3;
+#X obj 775 247 bng 14 250 50 0 empty empty open_this_patch 17 7 0 12
+-262144 -1 -1;
+#X obj 776 304 bng 14 250 50 0 empty empty close_this_patch 17 7 0
+12 -262144 -1 -1;
+#X obj 490 223 r initbang, f 11;
+#X text 612 28 PATCHES RECALL:;
+#X obj 613 100 f;
+#X text 489 201 Auto-Load Test;
+#X obj 614 149 sel 1 2 3;
+#X obj 490 247 bng 14 250 50 0 empty empty open_this_patch 17 7 0 12
+-262144 -1 -1;
+#X obj 491 304 bng 14 250 50 0 empty empty close_this_patch 17 7 0
+12 -262144 -1 -1;
+#X msg 490 264 \; pd open 0.00_test.pd /home/pi/pd-patch;
+#X msg 491 320 \; pd-0.00_test.pd menuclose \;;
+#X msg 775 264 \; pd open 2.00_Timeshuffler.pd /home/pi/pd-patch;
+#X msg 776 320 \; pd-2.00_Timeshuffler.pd menuclose \;;
+#X connect 0 0 10 0;
+#X connect 3 0 11 0;
+#X connect 4 0 10 0;
+#X connect 5 0 11 0;
+#X connect 6 0 12 0;
+#X connect 7 0 12 0;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 14 0 16 0;
+#X connect 29 0 33 0;
+#X connect 30 0 29 0;
+#X connect 30 0 31 0;
+#X connect 30 0 32 0;
+#X connect 32 0 33 0;
+#X connect 33 0 21 0;
+#X connect 33 1 22 0;
+#X connect 33 2 23 0;
+#X connect 33 3 24 0;
+#X connect 33 4 25 0;
+#X connect 33 5 26 0;
+#X connect 33 6 27 0;
+#X connect 33 7 28 0;
+#X connect 34 0 33 0;
+#X connect 35 0 33 0;
+#X connect 38 0 44 0;
+#X connect 39 0 44 1;
+#X connect 40 0 44 2;
+#X connect 41 0 44 3;
+#X connect 42 0 44 4;
+#X connect 43 0 44 5;
+#X connect 44 0 45 0;
+#X connect 46 0 44 6;
+#X connect 47 0 44 7;
+#X connect 48 0 56 0;
+#X connect 49 0 56 1;
+#X connect 50 0 58 0;
+#X connect 51 0 48 0;
+#X connect 52 0 63 0;
+#X connect 53 0 64 0;
+#X connect 54 0 59 0;
+#X connect 56 0 49 0;
+#X connect 56 0 50 0;
+#X connect 58 0 60 0;
+#X connect 58 1 52 0;
+#X connect 58 2 53 0;
+#X connect 59 0 61 0;
+#X connect 60 0 62 0;
+#X coords 0 818 1 817 180 80 0;

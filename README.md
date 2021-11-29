@@ -2,9 +2,13 @@
 Pure Data patches  for the mxmxmx's Terminal Tedium Eurorack module 
 (with raspberry PI zero and PD Vanilla used for this patches)
 
+# autostart.pd
+This patch is opened as the Mother-patch- use the third button on the panel of the TT
+module, for change the patch: 
+1/2 trigger close a patch, 2/2 trigger open the next patch
+the test patch is opened by default.
 
 # 6-tapes.pd
-### 1.01
 6-tapes is a granular algorithm for the mxmxmx's Terminal Tedium 
 that have 6 indipendent tapes. 
 1 second that you can record per tape. 
